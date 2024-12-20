@@ -31,6 +31,7 @@ public class JLogin extends JFrame {
 			public void run() {
 				try {
 					JLogin frame = new JLogin();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -83,6 +84,10 @@ public class JLogin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if( textField.getText()!= null && !textField.getText().isEmpty() && passwordField.getText() != null && !passwordField.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(btnNewButton, "Informações válidas");
+					dispose();
+					JPrincipal jPrincipal = new JPrincipal();
+					jPrincipal.setLocationRelativeTo(jPrincipal);
+					jPrincipal.setVisible(true);
 				}
 				else {
 						JOptionPane.showMessageDialog(btnNewButton, "Informações inválidas", "Aviso", JOptionPane.WARNING_MESSAGE);
