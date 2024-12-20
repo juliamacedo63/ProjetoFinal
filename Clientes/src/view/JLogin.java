@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -22,7 +23,9 @@ public class JLogin extends JFrame {
 	private JTextField textField;
 	private JPasswordField passwordField;
 
-	
+	/**
+	 * Launch the application.
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -78,7 +81,13 @@ public class JLogin extends JFrame {
 		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			}
+				if( textField.getText()!= null && !textField.getText().isEmpty() && passwordField.getText() != null && !passwordField.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(btnNewButton, "Informações válidas");
+				}
+				else {
+						JOptionPane.showMessageDialog(btnNewButton, "Informações inválidas", "Aviso", JOptionPane.WARNING_MESSAGE);
+				}
+				}
 		});
 		btnNewButton.setBounds(77, 164, 89, 23);
 		panel.add(btnNewButton);
