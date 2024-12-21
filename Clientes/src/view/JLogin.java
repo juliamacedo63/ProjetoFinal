@@ -45,7 +45,7 @@ public class JLogin extends JFrame {
 	 */
 	public JLogin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 1427, 810);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(128, 128, 192));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -54,27 +54,28 @@ public class JLogin extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
+		panel.setBounds(542, 214, 790, 586);
 		panel.setBackground(new Color(88, 82, 160));
-		panel.setBounds(92, 11, 253, 221);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Login");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Arial Black", Font.PLAIN, 15));
-		lblNewLabel.setBounds(98, 11, 52, 23);
+		lblNewLabel.setFont(new Font("Arial Black", Font.PLAIN, 40));
+		lblNewLabel.setBounds(237, 58, 258, 95);
 		panel.add(lblNewLabel);
 		
 		textField = new JTextField();
-		textField.setBounds(58, 70, 144, 20);
+		textField.setHorizontalAlignment(SwingConstants.CENTER);
+		textField.setBounds(300, 187, 144, 20);
 		panel.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Senha");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
-		lblNewLabel_1.setFont(new Font("Sitka Display", Font.PLAIN, 15));
-		lblNewLabel_1.setBounds(58, 112, 46, 14);
+		lblNewLabel_1.setFont(new Font("Sitka Display", Font.PLAIN, 23));
+		lblNewLabel_1.setBounds(304, 225, 89, 26);
 		panel.add(lblNewLabel_1);
 		
 		JButton btnNewButton = new JButton("Entrar");
@@ -83,28 +84,37 @@ public class JLogin extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if( textField.getText()!= null && !textField.getText().isEmpty() && passwordField.getText() != null && !passwordField.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(btnNewButton, "Informações válidas");
-					dispose();
-					JPrincipal jPrincipal = new JPrincipal();
-					jPrincipal.setLocationRelativeTo(jPrincipal);
-					jPrincipal.setVisible(true);
-				}
-				else {
-						JOptionPane.showMessageDialog(btnNewButton, "Informações inválidas", "Aviso", JOptionPane.WARNING_MESSAGE);
-				}
+						    String senhaCorreta = "1234";
+						    
+						    if (new String(passwordField.getPassword()).equals(senhaCorreta)) {
+						        JOptionPane.showMessageDialog(btnNewButton, "Informações válidas");
+						        dispose(); 
+						        JPrincipal jPrincipal = new JPrincipal(); 
+						        jPrincipal.setLocationRelativeTo(null);
+						        jPrincipal.setVisible(true);
+						    } else {
+						        JOptionPane.showMessageDialog(btnNewButton, "Senha incorreta!", "Erro", JOptionPane.ERROR_MESSAGE);
+						    }
+						    
+						} else {
+						    JOptionPane.showMessageDialog(btnNewButton, "Preencha todos os campos!", "Erro", JOptionPane.ERROR_MESSAGE);
+						}
+
+				
 				}
 		});
-		btnNewButton.setBounds(77, 164, 89, 23);
+		btnNewButton.setBounds(320, 280, 112, 33);
 		panel.add(btnNewButton);
 		
 		JLabel lblNewLabel_2 = new JLabel("Usuário");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setFont(new Font("Sitka Display", Font.PLAIN, 15));
-		lblNewLabel_2.setBounds(55, 56, 95, 14);
+		lblNewLabel_2.setFont(new Font("Sitka Display", Font.PLAIN, 22));
+		lblNewLabel_2.setBounds(281, 164, 112, 28);
 		panel.add(lblNewLabel_2);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(58, 126, 144, 20);
+		passwordField.setBounds(300, 249, 144, 20);
 		panel.add(passwordField);
 	}
 }
