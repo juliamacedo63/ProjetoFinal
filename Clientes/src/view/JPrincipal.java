@@ -1,5 +1,6 @@
 package view;
 
+
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -50,7 +51,7 @@ public class JPrincipal extends JFrame {
         // Painel principal
         JPanel panel = new JPanel();
         panel.setBackground(new Color(88, 82, 160));
-        panel.setBounds(33, 50, 900, 600); // Ajuste no tamanho e posicionamento do painel
+        panel.setBounds(43, 28, 900, 600); // Ajuste no tamanho e posicionamento do painel
         contentPane.add(panel);
         panel.setLayout(null);
 
@@ -68,14 +69,26 @@ public class JPrincipal extends JFrame {
         panel.add(btnJogoDaVelha);
 
         // Botão de outro serviço (exemplo)
-        JButton btnNewButton = new JButton("New button");
-        btnNewButton.addActionListener(new ActionListener() {
+        JButton btnCalculadora = new JButton("Calculadora");
+        btnCalculadora.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                // Cria a instância da tela da calculadora
+                JCalculadora telaCalculadora = new JCalculadora();
+                
+                // Remove a barra de título da janela da calculadora (sem os botões de fechar, minimizar e maximizar)
+                telaCalculadora.setUndecorated(true);  // Remove a barra de título com os botões
+
+                // Torna a janela da calculadora visível
+                telaCalculadora.setVisible(true);
+
+                // Fecha a janela principal (a janela onde o botão foi clicado)
+                dispose();
             }
         });
-        btnNewButton.setIcon(new ImageIcon("D:\\Aluno\\Imagens\\sticker-png-math-calculator-computer-icons-squaremath-information-calculadora-service-logo-calculator-area-sales.png"));
-        btnNewButton.setBounds(110, 228, 221, 197);
-        panel.add(btnNewButton);
+
+        btnCalculadora.setIcon(new ImageIcon("https://tse1.mm.bing.net/th?id=OIP.OVDukhnK2O9AR8KsgBLPQAHaHa&pid=Api&P=0&h=180"));
+        btnCalculadora.setBounds(110, 228, 221, 197);
+        panel.add(btnCalculadora);
 
         
         JLabel lblNewLabel = new JLabel("CALCULADORA");
@@ -107,6 +120,7 @@ public class JPrincipal extends JFrame {
                 JLogin telaLogin = new JLogin();  
                 telaLogin.setVisible(true);
                 dispose();
+                
             }
         });
         btnNewButton_1.setBackground(new Color(192, 192, 192));
