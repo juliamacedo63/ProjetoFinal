@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.awt.Color;
 
 public class JVelha extends JFrame{
 	JButton[] bt = new JButton[9];
@@ -15,17 +16,23 @@ public class JVelha extends JFrame{
 	boolean [] click = new boolean[9];
 	
 	public JVelha() {
+		getContentPane().setBackground(new Color(128, 128, 192));
 		setVisible(true);
+		setResizable(false);
+		setLocationRelativeTo(null); 
+		setSize(500,500);
+		
 		setTitle("Jogo da Velha");
 		setDefaultCloseOperation(3);
-		setLayout(null);
-		setBounds(250,100,700,500);
+		getContentPane().setLayout(null);
+		setBounds(250,100,600,500);
 		int cont =0;
 		for(int i =0; i<3; i++) {
 			for(int j =0; j<3;j++) {
 				bt[cont] = new JButton();
-				add(bt[cont]);
+				getContentPane().add(bt[cont]);
 				bt[cont].setBounds((100 * i) + 50, (100 * j) + 50,95,95);
+				bt[cont].setBackground(new Color(88, 82, 160));
 				bt[cont].setFont(new Font("Arial", Font.BOLD, 40));
 				cont ++;
 			}
@@ -36,7 +43,6 @@ public class JVelha extends JFrame{
 		}
 		
 		bt[0].addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(click[0] == false) {
@@ -129,10 +135,12 @@ public class JVelha extends JFrame{
 	public void mudar(JButton btn) {
 		if(xo) {
 			btn.setText("O");
+			btn.setForeground(Color.white);
 			xo = false;
 		}
 		else {
 			btn.setText("X");
+			btn.setForeground(Color.pink);
 			xo = true;
 		}
 		ganhou();

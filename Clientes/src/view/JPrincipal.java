@@ -62,6 +62,7 @@ public class JPrincipal extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JVelha telaJogoDaVelha = new JVelha();
                 telaJogoDaVelha.setVisible(true);
+                telaJogoDaVelha.setLocationRelativeTo(null); 
                 dispose();
             }
         });
@@ -77,7 +78,7 @@ public class JPrincipal extends JFrame {
                 
                 // Remove a barra de título da janela da calculadora (sem os botões de fechar, minimizar e maximizar)
                 telaCalculadora.setUndecorated(true);  // Remove a barra de título com os botões
-
+                telaCalculadora.setLocationRelativeTo(null); 
                 // Torna a janela da calculadora visível
                 telaCalculadora.setVisible(true);
 

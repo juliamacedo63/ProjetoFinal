@@ -21,6 +21,7 @@ public class JLogin extends JFrame {
     private JPanel contentPane;
     private JTextField textField;
     private JPasswordField passwordField;
+    private JLabel mensagem;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -63,7 +64,7 @@ public class JLogin extends JFrame {
         panel.add(lblNewLabel);
 
         textField = new JTextField();
-        textField.setBounds(158, 185, 150, 20);
+        textField.setBounds(158, 185, 178, 20);
         panel.add(textField);
         textField.setColumns(10);
 
@@ -86,14 +87,15 @@ public class JLogin extends JFrame {
                         jPrincipal.setLocationRelativeTo(null);
                         jPrincipal.setVisible(true);
                     } else {
-                        JOptionPane.showMessageDialog(btnNewButton, "Senha incorreta!", "Erro", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(mensagem, "Senha incorreta!", "Erro", JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
-                    JOptionPane.showMessageDialog(btnNewButton, "Preencha todos os campos!", "Erro", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(mensagem, "Preencha todos os campos!", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
         btnNewButton.setBounds(196, 298, 112, 33);
+       // mensagem.setBounds(EXIT_ON_CLOSE, ABORT, 500, 500);
         panel.add(btnNewButton);
 
         JLabel lblNewLabel_2 = new JLabel("Usuário");
@@ -104,7 +106,7 @@ public class JLogin extends JFrame {
         panel.add(lblNewLabel_2);
 
         passwordField = new JPasswordField();
-        passwordField.setBounds(158, 253, 150, 20);
+        passwordField.setBounds(158, 253, 178, 20);
         panel.add(passwordField);
     }
 }
