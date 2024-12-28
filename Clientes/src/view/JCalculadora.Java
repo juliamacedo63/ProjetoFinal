@@ -43,7 +43,7 @@ public class JCalculadora extends JFrame implements ActionListener {
 					frame.setLocationRelativeTo(frame);
 					frame.setUndecorated(true);
 					frame.setVisible(true);
-					frame.setOpacity((float) 0.99);
+			
 					frame.setTitle("Calculadora");
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -109,6 +109,14 @@ public class JCalculadora extends JFrame implements ActionListener {
 		JButton btnIMC = (criarBotao("IMC", 240, 330, 80, 80));
 		btnIMC.addActionListener(this);
 		contentPane.add(btnIMC);
+		btnIMC.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                imc telaIMC = new imc();
+                telaIMC.setVisible(true);
+                telaIMC.setLocationRelativeTo(null); 
+                dispose();
+            }
+        });
 
 		JButton btnIgual = (criarBotao("=", 240, 410, 80, 80));
 		btnIgual.addActionListener(this);
