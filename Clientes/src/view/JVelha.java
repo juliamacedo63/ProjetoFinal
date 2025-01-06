@@ -7,11 +7,20 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.Color;
 
 public class JVelha extends JFrame{
 	JButton[] bt = new JButton[9];
+	JLabel placar  = new JLabel("placar");
+	JLabel px = new JLabel("X 0");
+	JLabel po = new JLabel("O 0");
+	JButton novo = new JButton("novo jogo");
+	JButton zerar = new JButton("zerar placar");
+	int PX = 0;
+	int PO = 0;
+	
 	boolean xo = false;
 	boolean [] click = new boolean[9];
 	
@@ -26,6 +35,35 @@ public class JVelha extends JFrame{
 		setDefaultCloseOperation(3);
 		getContentPane().setLayout(null);
 		setBounds(250,100,600,500);
+		add(placar);
+		add(px);
+		add(po);
+		add(novo);
+		add(zerar);
+		placar.setBounds(420, 50, 100, 30);
+		px.setBounds(400, 75, 100, 30);
+		po.setBounds(450, 75, 100, 30);
+		novo.setBounds(410, 130, 140, 30);
+		zerar.setBounds(410, 180, 140, 30);
+		
+		novo.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				limpar();
+				
+			}
+		});
+		
+		zerar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				PO = 0;
+				PX = 0;
+				atualizar();
+				
+			}
+		});
+		
 		int cont =0;
 		for(int i =0; i<3; i++) {
 			for(int j =0; j<3;j++) {
@@ -144,8 +182,12 @@ public class JVelha extends JFrame{
 			xo = true;
 		}
 		ganhou();
-		
 	}
+	public void atualizar() {
+		px.setText("X" + PX);
+		po.setText("O" + PO);
+	}
+	
 	public void ganhou() {
 		int cont = 0;
 		for(int i = 0; i < 9; i ++) {
@@ -164,6 +206,8 @@ public class JVelha extends JFrame{
 				(bt[2].getText() == "X" && bt[5].getText() == "X" && bt[8].getText() == "X")){
 			
 			JOptionPane.showMessageDialog(null, "X ganhou");
+			PX++;
+			atualizar();
 			limpar();
 			
 		}
@@ -176,6 +220,8 @@ public class JVelha extends JFrame{
 				(bt[1].getText() == "O" && bt[4].getText() == "O" && bt[7].getText() == "O") ||
 				(bt[2].getText() == "O" && bt[5].getText() == "O" && bt[8].getText() == "O")){
 			JOptionPane.showMessageDialog(null, "O ganhou");
+			PO++;
+			atualizar();
 			limpar();
 		}
 		else if(cont == 9) {
@@ -187,9 +233,12 @@ public class JVelha extends JFrame{
 		for(int i =0; i< 9; i ++) {
 			bt[i].setText("");
 			click[i] = false;
+			xo = false;
+			
 		}
 	}
 	public static void main(String[] args) {
 		new JVelha();
 	}
 }
+	
